@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CardGame.Models;
 
-namespace CardGame.Models
+namespace CardGame
 {
     public abstract class Deck
     {
-        protected List<PlayingCard> fullDeck = new List<PlayingCard>();
-        protected List<PlayingCard> drawPile = new List<PlayingCard>();
-        protected List<PlayingCard> discardPile = new List<PlayingCard>();
-       
+        protected List<PlayingCardModel> fullDeck = new List<PlayingCardModel>();
+        protected List<PlayingCardModel> drawPile = new List<PlayingCardModel>();
+        protected List<PlayingCardModel> discardPile = new List<PlayingCardModel>();
+
         protected void CreateDeck()
         {
             fullDeck.Clear();
@@ -19,7 +20,7 @@ namespace CardGame.Models
             {
                 foreach (var value in Enum.GetValues(typeof(CardValue)))
                 {
-                    fullDeck.Add(new PlayingCard { Suit = (CardSuit)suit, Value = (CardValue)value});
+                    fullDeck.Add(new PlayingCardModel { Suit = (CardSuit)suit, Value = (CardValue)value });
                 }
             }
         }
@@ -30,11 +31,11 @@ namespace CardGame.Models
             drawPile = fullDeck.OrderBy(x => rnd.Next()).ToList();
         }
 
-        public abstract List<PlayingCard> DealCards();
+        public abstract List<PlayingCardModel> DealCards();
 
-        protected virtual PlayingCard DrawOneCard()
+        protected virtual PlayingCardModel DrawOneCard()
         {
-            PlayingCard output = drawPile.Take(1).First();
+            PlayingCardModel output = drawPile.Take(1).First();
             drawPile.Remove(output);
             return output;
         }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CardGame.Models;
 
-namespace CardGame.Models
+namespace CardGame
 {
     public class PokerDeck : Deck
     {
@@ -13,9 +14,9 @@ namespace CardGame.Models
             CreateDeck();
             ShuffleDeck();
         }
-        public override List<PlayingCard> DealCards()
+        public override List<PlayingCardModel> DealCards()
         {
-            List<PlayingCard> output = new List<PlayingCard>();
+            List<PlayingCardModel> output = new List<PlayingCardModel>();
 
             for (int i = 0; i < 5; i++)
             {
@@ -24,9 +25,9 @@ namespace CardGame.Models
             return output;
         }
 
-        public List<PlayingCard> RequestCards(List<PlayingCard> cardsToDiscard)
+        public List<PlayingCardModel> RequestCards(List<PlayingCardModel> cardsToDiscard)
         {
-            List<PlayingCard> output = new List<PlayingCard>();
+            List<PlayingCardModel> output = new List<PlayingCardModel>();
 
             foreach (var card in cardsToDiscard)
             {
