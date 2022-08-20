@@ -26,7 +26,8 @@ namespace CardGame.Models
 
         public virtual void ShuffleDeck()
         {
-
+            var rnd = new Random();
+            drawPile = fullDeck.OrderBy(x => rnd.Next()).ToList();
         }
 
         public abstract List<PlayingCard> DealCard();
