@@ -12,7 +12,7 @@ namespace CardGame.Models
         protected List<PlayingCard> drawPile = new List<PlayingCard>();
         protected List<PlayingCard> discardPile = new List<PlayingCard>();
        
-        public void CreateDeck()
+        protected void CreateDeck()
         {
             fullDeck.Clear();
             foreach (var suit in Enum.GetValues(typeof(CardSuit)))
@@ -32,7 +32,7 @@ namespace CardGame.Models
 
         public abstract List<PlayingCard> DealCards();
 
-        public virtual PlayingCard RequestCard()
+        protected virtual PlayingCard DrawOneCard()
         {
             PlayingCard output = drawPile.Take(1).First();
             drawPile.Remove(output);

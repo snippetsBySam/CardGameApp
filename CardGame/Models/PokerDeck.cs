@@ -19,7 +19,19 @@ namespace CardGame.Models
 
             for (int i = 0; i < 5; i++)
             {
-                output.Add(RequestCard());
+                output.Add(DrawOneCard());
+            }
+            return output;
+        }
+
+        public List<PlayingCard> RequestCards(List<PlayingCard> cardsToDiscard)
+        {
+            List<PlayingCard> output = new List<PlayingCard>();
+
+            foreach (var card in cardsToDiscard)
+            {
+                output.Add(DrawOneCard());
+                discardPile.Add(card);
             }
             return output;
         }
