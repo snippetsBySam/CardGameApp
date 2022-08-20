@@ -24,5 +24,10 @@ namespace CardGame
             }
             return output;
         }
+
+        public PlayingCardModel RequestCard()
+        {
+            return DrawOneCard();
+        }
     }
 }
