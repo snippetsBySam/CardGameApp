@@ -34,7 +34,9 @@ namespace CardGame.Models
 
         public virtual PlayingCard RequestCard()
         {
-
+            PlayingCard output = drawPile.Take(1).First();
+            drawPile.Remove(output);
+            return output;
         }
     }
 }
