@@ -30,7 +30,7 @@ namespace CardGame.Models
             drawPile = fullDeck.OrderBy(x => rnd.Next()).ToList();
         }
 
-        public abstract List<PlayingCard> DealCard();
+        public abstract List<PlayingCard> DealCards();
 
         public virtual PlayingCard RequestCard()
         {
